@@ -1,3 +1,5 @@
+import { headerAppender } from "./header";
+
 const Card = (article) => {
   // TASK 5
   // ---------------------
@@ -17,6 +19,35 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
+
+  // Creating Elements
+  const cardDiv = document.createElement('div');
+  const headlineDiv = document.createElement('div');
+  const authorDiv = document.createElement('div');
+  const imgDiv = document.createElement('div');
+  const img = document.createElement('img');
+  const span = document.createElement('span');
+
+
+  // Adding classes
+  cardDiv.classList.add('class');
+  headlineDiv.classList.add('headline');
+  authorDiv.classList.add('author');
+  imgDiv.classList.add('img-container');
+
+  // Adding attribute
+  img.src = article.authorPhoto;
+
+  // Adding Text
+  headlineDiv.textContent = article.headline;
+  span.textContent = `By ${article.authorName}`;
+
+  // Event Listener
+  cardDiv.addEventListener('click', (e) => {
+    console.log(`${article.headline}`);
+  });
+
+  return cardDiv;
 }
 
 const cardAppender = (selector) => {
