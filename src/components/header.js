@@ -36,7 +36,7 @@ const Header = (title, date, temp) => {
   return headerDiv;
   
 }
-console.log(Header());
+// console.log(Header());
 
 const headerAppender = (selector) => {
   // TASK 2
@@ -51,11 +51,9 @@ const headerAppender = (selector) => {
   //   return headerObject
   // } else {
   //   return "Error"; 
-  return new Promise((resolve))
-  }
+  return new Promise((resolve) => {
 
-  
-  
+  })
 }
-console.log(headerAppender())
+// console.log(headerAppender())
 export { Header, headerAppender }
