@@ -68,9 +68,11 @@ const cardAppender = (selector) => {
     console.log('Task 6a:', res.data.articles)
     const cards = Card(res.data.articles)
     const java = Card(res.data.articles.javascript[0])
-    const boot = Card(res.data.articles.bootstrap[0])
-    const tech = Card(res.data.articles.technology[0])
-    
+    const boot = Card(res.data.articles.bootstrap[1])
+    const tech = Card(res.data.articles.technology[2])
+    const jQuery = Card(res.data.articles.jquery[2])
+    const node = Card(res.data.articles.node[1])
+
 
     // res.data.articles.forEach(item => {
     //   document.querySelector(selector).appendChild(item[0])
@@ -80,6 +82,10 @@ const cardAppender = (selector) => {
     
 
     document.querySelector(selector).appendChild(java)
+    document.querySelector(selector).appendChild(boot)
+    document.querySelector(selector).appendChild(tech)
+    document.querySelector(selector).appendChild(jQuery)
+    document.querySelector(selector).appendChild(node)
   })
   .catch(err => {
     console.log(err)
