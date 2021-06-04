@@ -1,3 +1,7 @@
+import axios from 'axios';
+import { articles } from '../mocks/data'
+import { headerAppender } from './header';
+
 const Card = (article) => {
   // TASK 5
   // ---------------------
@@ -17,7 +21,38 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
+
+  const cardDiv = document.createElement('div')
+  const headlineDiv = document.createElement('div');
+  const authorDiv = document.createElement('div');
+  const imgDiv = document.createElement('div');
+  const img = document.createElement('img');
+  const span = document.createElement('span');
+
+  cardDiv.classList.add('cards');
+  headlineDiv.classList.add('headline');
+  authorDiv.classList.add('author');
+  imgDiv.classList.add('img-container');
+
+  img.src = article.authorPhoto;
+
+  headlineDiv.textContent = article.headline;
+  span.textContent = `By ${article.authorName}`;
+
+  cardDiv.addEventListener('click', () => {
+    console.log('Article Headline:', `${article.headline}`)
+  });
+
+  cardDiv.appendChild(headlineDiv)
+  cardDiv.appendChild(authorDiv)
+  authorDiv.appendChild(imgDiv)
+  imgDiv.appendChild(img)
+  authorDiv.appendChild(span)
+
+  return cardDiv;
 }
+console.log('Task 5:', Card(articles))
+console.log('Articles:', articles.articles)
 
 const cardAppender = (selector) => {
   // TASK 6
@@ -28,6 +63,20 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+  axios.get('https://lambda-times-api.herokuapp.com/articles')
+  .then(res => {
+    console.log(res.data.articles)
+    const java = Card(res.data.articles.javascript[0])
+    const boot = Card(res.data.articles.bootstrap[0])
+    const tech = Card(res.data.articles.technology[0])
+    console.log('Task 6:', java)
+    console.log(boot)
+    console.log(tech)
+    document.querySelector
+  })
+  .catch(err => {
+    console.log(err)
+  })
 }
 
 export { Card, cardAppender }

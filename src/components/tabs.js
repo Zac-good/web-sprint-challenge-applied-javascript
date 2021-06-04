@@ -27,9 +27,9 @@ const Tabs = (topics) => {
   tabDiv2.classList.add('tab')
   tabDiv3.classList.add('tab')
 
-  tabDiv1.textContent = topics.topics
-  tabDiv2.textContent = topics.topics
-  tabDiv3.textContent = topics.topics
+  tabDiv1.textContent = topics[0];
+  tabDiv2.textContent = topics[1];
+  tabDiv3.textContent = topics[2];
 
   topicsDiv.appendChild(tabDiv1)
   topicsDiv.appendChild(tabDiv2)
@@ -38,7 +38,8 @@ const Tabs = (topics) => {
   return topicsDiv;
 
 }
-console.log(Tabs(topics))
+console.log('Task 3:', Tabs(topics))
+ 
 
 const tabsAppender = (selector) => {
   // TASK 4
@@ -51,14 +52,17 @@ const tabsAppender = (selector) => {
 
   axios.get('https://lambda-times-api.herokuapp.com/topics')
   .then(res => {
-    console.log(res.data.topics)
+    console.log("Topics:", res.data.topics)
     const tabs = Tabs(res.data.topics)
-    document.querySelector(selector).appendChild(tabs);
+    
+    document.querySelector(selector).appendChild(tabs)
+    
+    
+   
   })
   .catch(err => {
     console.log(err)
   })
 
 }
-
 export { Tabs, tabsAppender }
